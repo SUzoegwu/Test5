@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.somtouzoegwu.test5">
 
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -21,15 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmergencyContact">
-
-        </activity>
-        <activity android:name=".LogIn">
-        </activity>
-        <activity android:name=".PasswordPage">
-        </activity>
-        <activity android:name=".SecretCode"></activity>
-
+        <activity android:name=".EmergencyContact"></activity>
+        <activity android:name=".LogIn"></activity>
+        <activity android:name=".SecretCode" />
+        <activity android:name=".Registration"></activity>
     </application>
 
 </manifest>

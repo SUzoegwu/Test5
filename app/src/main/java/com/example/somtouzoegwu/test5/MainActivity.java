@@ -7,13 +7,29 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.text.Html;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+
+    //User Session Manager Class
+    UserSessionManager session;
+
+    //Button Logout
+    Button btnLogout;
+
+    //Alert Dialog Manager (**new**)
+//    AlertDialogManger alert = new AlertDialogManager
+
 
     int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 //    private LocationManager locationManager;
@@ -56,6 +72,38 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //        locationManager.requestLocationUpdates("gps", 5000, 10, locationListener);
+
+        session = new UserSessionManager(getApplicationContext());
+        TextView lblName = (TextView) findViewById(R.id.lblName);
+
+        //Button logout
+        btnLogout = (Button) findViewById(R.id.btnLogout);
+
+        //Check user login
+        //If User is not logged in, This willp redirect user to Login
+        if (session.checkLogin()){
+            finish();}
+        else{
+            Intent i = new Intent(getApplicationContext(), LogIn.class);
+        }
+
+        //get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        //get name
+        String name = user.get(UserSessionManager.KEY_NAME);
+
+        //Show user data on activity
+        lblName.setText(Html.fromHtml("Name: <b>" + name + "</b>"));
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                session.logoutUser();
+            }
+
+
+        });
     }
 
     public void open_Emergency_Contacts(View v){
@@ -70,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void btn_SendSMS_OnClick(View v){
         String message = "Hey! This test button works";
-        String telNumber = "909-929-4214";
+        String telNumber = "424-298-0340";
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED){
