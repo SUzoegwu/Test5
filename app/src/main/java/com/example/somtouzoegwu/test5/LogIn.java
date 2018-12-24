@@ -39,7 +39,9 @@ public class LogIn extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "User Login Status:" + session.isUserLoggedIn(), Toast.LENGTH_LONG).show();
 
         //User Login button
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(new OnClickListener(){
             @Override
