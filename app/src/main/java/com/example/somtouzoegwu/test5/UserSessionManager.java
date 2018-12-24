@@ -39,6 +39,11 @@ public class UserSessionManager {
         editor = pref.edit();
     }
 
+    public void registerUser(String username, String password){
+        editor.putString(username + password + "data", username + "/n");
+        editor.commit();
+    }
+
     public void createUserLoginSession(String name, String email){
         //Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
