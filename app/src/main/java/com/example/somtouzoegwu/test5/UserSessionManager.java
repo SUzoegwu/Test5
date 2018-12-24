@@ -14,6 +14,9 @@ public class UserSessionManager {
     //Shared Preferences reference
     SharedPreferences pref;
 
+    SharedPreferences registerpref;
+    SharedPreferences.Editor registeredit;
+
     //Editor reference for Shared preferences
     SharedPreferences.Editor editor;
 
@@ -25,6 +28,7 @@ public class UserSessionManager {
 
     //Sharedpref file name
     private static final String PREFER_NAME = "Pref";
+    private static final String REGISTER_NAME = "REGISTER";
 
     //All Shared Preferences Keys
     private static final String IS_USER_LOGIN = "IsLoggedIn";
@@ -36,12 +40,19 @@ public class UserSessionManager {
     public UserSessionManager(Context context){
         this._context = context;
         pref = _context.getSharedPreferences(PREFER_NAME, PRIVATE_MODE);
+        registerpref = context.getSharedPreferences(REGISTER_NAME, PRIVATE_MODE);
+        registeredit = registerpref.edit();
         editor = pref.edit();
     }
 
     public void registerUser(String username, String password){
-        editor.putString(username + password + "data", username + "/n");
-        editor.commit();
+        registeredit.putString(username + password + "data", username + "/n");
+        registeredit.commit();
+    }
+
+    public String getString(String name){
+        String details = registerpref.getString(name, "Username or Password in Incorrect");
+        return details;
     }
 
     public void createUserLoginSession(String name, String email){
