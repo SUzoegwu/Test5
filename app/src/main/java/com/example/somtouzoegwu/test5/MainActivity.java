@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void open_Emergency_Contacts(View v){
-        Intent intents = new Intent(this, EmergencyContact.class);
+        Intent intents = new Intent(this, emergency_contact_list.class);
         startActivity(intents);
     }
 

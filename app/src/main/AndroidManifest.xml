@@ -21,10 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmergencyContact"></activity>
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".EmergencyContact" />
+        <activity android:name=".LogIn" />
         <activity android:name=".SecretCode" />
-        <activity android:name=".Registration"></activity>
+        <activity android:name=".Registration" />
+        <activity android:name=".emergency_contact_list"></activity>
     </application>
 
 </manifest>
